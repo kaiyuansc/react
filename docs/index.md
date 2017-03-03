@@ -1,6 +1,6 @@
 ---
 layout: hero
-title: A JavaScript library for building user interfaces
+title: 一个用来构建用户界面的 JavaScript 库
 id: home
 ---
 
@@ -27,13 +27,22 @@ id: home
 <section class="home-section">
   <div id="examples">
     <div class="example">
-      <h3>A Simple Component</h3>
+      <h3>一个简单的组件</h3>
+      <p>
+        React 组件通过一个render()方法，接受输入的参数并返回展示的对象。
+        以下这个例子使用了 JSX，它类似于XML的语法
+        输入的参数通过render()传入组件后，将存储在this.props
+      </p>
       <p>
         React components implement a `render()` method that takes input data and
         returns what to display. This example uses an XML-like syntax called
         JSX. Input data that is passed into the component can be accessed by
         `render()` via `this.props`.
       </p>
+      <p>
+      <strong>JSX 是可选的，并不强制要求使用。</strong>
+      点击 "Compiled JS" 可以看到 JSX 编译之后的 JavaScript 代码。
+      </p>
       <p>
         <strong>JSX is optional and not required to use React.</strong> Try
         clicking on "Compiled JS" to see the raw JavaScript code produced by
@@ -42,7 +51,11 @@ id: home
       <div id="helloExample"></div>
     </div>
     <div class="example">
-      <h3>A Stateful Component</h3>
+      <h3>一个有状态的组件</h3>
+      <p>
+        除了接受输入数据（通过 this.props ），组件还可以保持内部状态数据（通过 this.state ）。
+        当一个组件的状态数据的变化，展现的标记将被重新调用 render() 更新。
+      </p>
       <p>
         In addition to taking input data (accessed via `this.props`), a
         component can maintain internal state data (accessed via `this.state`).
@@ -52,7 +65,12 @@ id: home
       <div id="timerExample"></div>
     </div>
     <div class="example">
-      <h3>An Application</h3>
+      <h3>一个应用程序</h3>
+      <p>
+        通过使用 props 和 state, 我们可以组合构建一个小型的 Todo 程序。
+        这个例子使用state去监测当前列表的项以及用户已经输入的文本。
+        尽管事件绑定似乎是以内联的方式，但他们将被收集起来并以事件代理的方式实现。
+      </p>
       <p>
         Using `props` and `state`, we can put together a small Todo application.
         This example uses `state` to track the current list of items as well as
@@ -63,7 +81,11 @@ id: home
       <div id="todoExample"></div>
     </div>
     <div class="example">
-      <h3>A Component Using External Plugins</h3>
+      <h3>一个使用外部插件的组件</h3>
+      <p>
+        React 是灵活的，并且提供方法允许你跟其他库和框架对接。
+        这个例子展现了一个案例，使用外部库 Markdown 实时转化 textarea 的值。
+      </p>
       <p>
         React is flexible and provides hooks that allow you to interface with
         other libraries and frameworks. This example uses **remarkable**, an
@@ -81,7 +103,7 @@ id: home
 <hr class="home-divider" />
 <section class="home-bottom-section">
   <div class="buttons-unit">
-    <a href="docs/hello-world.html" class="button">Get Started</a>
-    <a href="tutorial/tutorial.html" class="button">Take the Tutorial</a>
+    <a href="docs/hello-world.html" class="button">入门</a>
+    <a href="tutorial/tutorial.html" class="button">教程</a>
   </div>
 </section>
