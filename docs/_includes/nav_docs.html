@@ -4,6 +4,7 @@
     <div class="nav-docs-section">
       <h3>{{ section.title }}</h3>
       <ul>
+        {% for item in section.items %}
           <li>
             <a href="react/docs/{{ item.id }}.html"{% if page.id == item.id %} class="active"{% endif %}>{{ item.title }}</a>
             {% if item.subitems %}
