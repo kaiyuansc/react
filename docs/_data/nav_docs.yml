@@ -1,35 +1,35 @@
-- title: Quick Start
+- title: 快速入门
   items:
     - id: installation
-      title: Installation
+      title: 安装
     - id: hello-world
       title: Hello World
     - id: introducing-jsx
-      title: Introducing JSX
+      title: 介绍 JSX
     - id: rendering-elements
-      title: Rendering Elements
+      title: 渲染元素
     - id: components-and-props
-      title: Components and Props
+      title: Components 和 Props
     - id: state-and-lifecycle
-      title: State and Lifecycle
+      title: 状态和生命周期
     - id: handling-events
-      title: Handling Events
+      title: 处理事件
     - id: conditional-rendering
-      title: Conditional Rendering
+      title: 条件渲染
     - id: lists-and-keys
       title: Lists and Keys
     - id: forms
-      title: Forms
+      title: 表单
     - id: lifting-state-up
       title: Lifting State Up
     - id: composition-vs-inheritance
       title: Composition vs Inheritance
     - id: thinking-in-react
       title: Thinking In React
-- title: Advanced Guides
+- title: 高级教程
   items:
     - id: jsx-in-depth
-      title: JSX In Depth
+      title: JSX 深入
     - id: typechecking-with-proptypes
       title: Typechecking With PropTypes
     - id: refs-and-the-dom
@@ -37,7 +37,7 @@
     - id: uncontrolled-components
       title: Uncontrolled Components
     - id: optimizing-performance
-      title: Optimizing Performance
+      title: 优化性能
     - id: react-without-es6
       title: React Without ES6
     - id: react-without-jsx
@@ -50,7 +50,7 @@
       title: Web Components
     - id: higher-order-components
       title: Higher-Order Components
-- title: Reference
+- title: 参考
   items:
     - id: react-api
       title: React
@@ -73,7 +73,7 @@
         - id: test-utils
           title: Test Utilities
         - id: animation
-          title: Animation
+          title: 动画
         - id: create-fragment
           title: Keyed Fragments
         - id: update
