@@ -11,8 +11,7 @@ redirect_from:
   - "docs/getting-started-zh-CN.html"
 ---
 
-开始学习React的最简单方法就使用[this Hello World example code on CodePen](http://codepen.io/gaearon/pen/ZpvBNJ?editors=0010)。你不需要安装任何东西，你只需要在新标签页中它并跟着做。如果你想要根底开发环境，查看[安装](react/docs/installation)页
-
+开始学习React的最简单方法就使用[this Hello World example code on CodePen](http://codepen.io/gaearon/pen/ZpvBNJ?editors=0010)。你不需要安装任何东西，你只需要在新标签页中打开它并跟着做。如果你想要使用本地开发环境，查看[安装](react/docs/installation)页。
 The easiest way to get started with React is to use [this Hello World example code on CodePen](http://codepen.io/gaearon/pen/ZpvBNJ?editors=0010). You don't need to install anything; you can just open it in another tab and follow along as we go through examples. If you'd rather use a local development environment, check out the [Installation](/react/docs/installation.html) page.
 
 React中最小的例子如下:
@@ -30,11 +29,13 @@ ReactDOM.render(
 
 It renders a header saying "Hello, world!" on the page.
 
+后面的章节将逐步地向你介绍如何使用 React。我们将检查 React apps 的创建模块：元素和组件。一旦你精通它们，你就能从小的可重用的部件开始创建复杂的 apps 了。
+
 The next few sections will gradually introduce you to using React. We will examine the building blocks of React apps: elements and components. Once you master them, you can create complex apps from small reusable pieces.
 
-## A Note on JavaScript
+## 关于 JavaScript 的注释
 
-React是一个JavaScript库，所以它假设已经有JavaScript语言的基础了。如果你没有足够的信心，我们建议[加强你的JavaScript基础](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript)，以便顺利学习。
+React是一个JavaScript库，所以它假设你已经有JavaScript语言的基础了。如果你没有足够的信心，我们建议[加强你的JavaScript基础](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript)，以便顺利学习。
 
 React is a JavaScript library, and so it assumes you have a basic understanding of the JavaScript language. If you don't feel very confident, we recommend [refreshing your JavaScript knowledge](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript) so you can follow along more easily.
 
