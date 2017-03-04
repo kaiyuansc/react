@@ -22,6 +22,8 @@ This funny tag syntax is neither a string nor HTML.
 
 It is called JSX, and it is a syntax extension to JavaScript. We recommend using it with React to describe what the UI should look like. JSX may remind you of a template language, but it comes with the full power of JavaScript.
 
+JSX 产生 React “元素”。我们将在[下一章节](/react/docs/rendering-elements.html)中探究如何把它们渲染进 DOM。下面，你能找到 JSX 入门的必须基础知识。
+
 JSX produces React "elements". We will explore rendering them to the DOM in the [next section](/react/docs/rendering-elements.html). Below, you can find the basics of JSX necessary to get you started.
 
 ### 在 JSX 中嵌入表达式
@@ -58,11 +60,17 @@ ReactDOM.render(
 
 [在 CodePen 中试一试](http://codepen.io/gaearon/pen/PGEjdG?editors=0010)
 
+为了可读性，我们将 JSX 分成多行。这么做尽管不是必须，我们同样推荐用一个括号包裹它以避免自动分号插入的陷阱。
+
 We split JSX over multiple lines for readability. While it isn't required, when doing this, we also recommend wrapping it in parentheses to avoid the pitfalls of [automatic semicolon insertion](http://stackoverflow.com/q/2846283).
 
 ### JSX 也是一个表达式
 
+编译后，JSX 表达式变成一个合格的 JavaScript 对象。
+
 After compilation, JSX expressions become regular JavaScript objects.
+
+这表明你能在 `if` 状态和 `for` 循环中使用 JSX，把它赋值给变量，以参数的形式接收它，从函数中返回它。
 
 This means that you can use JSX inside of `if` statements and `for` loops, assign it to variables, accept it as arguments, and return it from functions:
 
@@ -75,13 +83,17 @@ function getGreeting(user) {
 }
 ```
 
-### Specifying Attributes with JSX
+### 为 JSX 指定属性
+
+你可以使用引号指定字符串字面量来作为属性：
 
 You may use quotes to specify string literals as attributes:
 
 ```js
 const element = <div tabIndex="0"></div>;
 ```
+
+你也可以使用大括号来嵌入一个 JavaScript 表达式作为属性：
 
 You may also use curly braces to embed a JavaScript expression in an attribute:
 
@@ -91,7 +103,7 @@ const element = <img src={user.avatarUrl}></img>;
 
 Don't put quotes around curly braces when embedding a JavaScript expression in an attribute. Otherwise JSX will treat the attribute as a string literal rather than an expression. You should either use quotes (for string values) or curly braces (for expressions), but not both in the same attribute.
 
-### Specifying Children with JSX
+### 为 JSX 指定子元素
 
 如果一个标签是空标签，你可以直接用 `/>` 关闭它，就像 XML 一样：
 
@@ -100,6 +112,8 @@ If a tag is empty, you may close it immediately with `/>`, like XML:
 ```js
 const element = <img src={user.avatarUrl} />;
 ```
+
+JSX 标签可以包含子元素：
 
 JSX tags may contain children:
 
