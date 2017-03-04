@@ -1,15 +1,21 @@
 ---
 id: conditional-rendering
-title: Conditional Rendering
+title: 条件渲染
 permalink: docs/conditional-rendering.html
 prev: handling-events.html
 next: lists-and-keys.html
 redirect_from: "tips/false-in-jsx.html"
 ---
 
+在 React 中，你能创建有区别的封装了你需要行为的组件。然后你可以根据你应用程序的状态渲染它们中的一些组件。
+
 In React, you can create distinct components that encapsulate behavior you need. Then, you can render only some of them, depending on the state of your application.
 
+在 React 中条件渲染工作的方式和 JavaScript 的条件工作方式一样。使用 JavaScript 操作符如 [`if`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else) 或 [条件操作符](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Conditional_Operator) 创建代表当前状态的元素，然后让 React 更新 UI 以匹配它们。
+
 Conditional rendering in React works the same way conditions work in JavaScript. Use JavaScript operators like [`if`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else) or the [conditional operator](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Conditional_Operator) to create elements representing the current state, and let React update the UI to match them.
+
+考虑下面两个组件：
 
 Consider these two components:
 
@@ -41,13 +47,15 @@ ReactDOM.render(
 );
 ```
 
-[Try it on CodePen.](https://codepen.io/gaearon/pen/ZpVxNq?editors=0011)
+[在 CodePen 中试一试](https://codepen.io/gaearon/pen/ZpVxNq?editors=0011)
 
 This example renders a different greeting depending on the value of `isLoggedIn` prop.
 
-### Element Variables
+### 元素变量
 
 You can use variables to store elements. This can help you conditionally render a part of the component while the rest of the output doesn't change.
+
+考虑这两个代表注销和登录按钮的两个新组件：
 
 Consider these two new components representing Logout and Login buttons:
 
@@ -68,6 +76,8 @@ function LogoutButton(props) {
   );
 }
 ```
+
+下面的例子中，我们将创建一个叫做 `LoginControl` 的 [有状态的组件](/react/docs/state-and-lifecycle.html#adding-local-state-to-a-class)。
 
 In the example below, we will create a [stateful component](/react/docs/state-and-lifecycle.html#adding-local-state-to-a-class) called `LoginControl`.
 
@@ -115,7 +125,7 @@ ReactDOM.render(
 );
 ```
 
-[Try it on CodePen.](https://codepen.io/gaearon/pen/QKzAgB?editors=0010)
+[在 CodePen 中试一试](https://codepen.io/gaearon/pen/QKzAgB?editors=0010)
 
 While declaring a variable and using an `if` statement is a fine way to conditionally render a component, sometimes you might want to use a shorter syntax. There are a few ways to inline conditions in JSX, explained below.
 
@@ -145,7 +155,7 @@ ReactDOM.render(
 );
 ```
 
-[Try it on CodePen.](https://codepen.io/gaearon/pen/ozJddz?editors=0010)
+[在 CodePen 中试一试](https://codepen.io/gaearon/pen/ozJddz?editors=0010)
 
 It works because in JavaScript, `true && expression` always evaluates to `expression`, and `false && expression` always evaluates to `false`.
 
@@ -187,7 +197,7 @@ render() {
 
 Just like in JavaScript, it is up to you to choose an appropriate style based on what you and your team consider more readable. Also remember that whenever conditions become too complex, it might be a good time to [extract a component](/react/docs/components-and-props.html#extracting-components).
 
-### Preventing Component from Rendering
+### 组织渲染组件
 
 In rare cases you might want a component to hide itself even though it was rendered by another component. To do this return `null` instead of its render output.
 
@@ -237,6 +247,6 @@ ReactDOM.render(
 );
 ```
 
-[Try it on CodePen.](https://codepen.io/gaearon/pen/Xjoqwm?editors=0010)
+[在 CodePen 中试一试](https://codepen.io/gaearon/pen/Xjoqwm?editors=0010)
 
 Returning `null` from a component's `render` method does not affect the firing of the component's lifecycle methods. For instance, `componentWillUpdate` and `componentDidUpdate` will still be called.
