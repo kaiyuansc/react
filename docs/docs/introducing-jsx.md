@@ -28,7 +28,7 @@ JSX produces React "elements". We will explore rendering them to the DOM in the 
 
 ### 在 JSX 中嵌入表达式
 
-你能在 JSX 中通过大括号包裹它的形式嵌入任何 [[JavaScript 表达式](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators#Expressions)
+你能在 JSX 中通过大括号包裹它的形式嵌入任何 [JavaScript 表达式](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators#Expressions)
 
 You can embed any [JavaScript expression](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators#Expressions) in JSX by wrapping it in curly braces.
 
