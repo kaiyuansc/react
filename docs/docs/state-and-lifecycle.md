@@ -1,15 +1,21 @@
 ---
 id: state-and-lifecycle
-title: State and Lifecycle
+title: 状态和生命周期
 permalink: docs/state-and-lifecycle.html
 redirect_from: "docs/interactivity-and-dynamic-uis.html"
 prev: components-and-props.html
 next: handling-events.html
 ---
 
+考虑 [签名章节](/react/docs/rendering-elements.html#updating-the-rendered-element) 中时钟的例子。
+
 Consider the ticking clock example from [one of the previous sections](/react/docs/rendering-elements.html#updating-the-rendered-element).
 
+到目前为止我们只学习了一种更新 UI 的方法。
+
 So far we have only learned one way to update the UI.
+
+我们调用 `ReactDOM.render()` 去改变渲染输出：
 
 We call `ReactDOM.render()` to change the rendered output:
 
@@ -30,8 +36,9 @@ function tick() {
 setInterval(tick, 1000);
 ```
 
-[Try it on CodePen.](http://codepen.io/gaearon/pen/gwoJZk?editors=0010)
+[在 CodePen 中试一试](http://codepen.io/gaearon/pen/gwoJZk?editors=0010)
 
+这一章中，我们将学习如何使这个 `Clock` 组件真正实现封装的和可重用的。
 In this section, we will learn how to make the `Clock` component truly reusable and encapsulated. It will set up its own timer and update itself every second.
 
 We can start by encapsulating how the clock looks:
