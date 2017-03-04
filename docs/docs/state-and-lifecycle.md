@@ -7,7 +7,7 @@ prev: components-and-props.html
 next: handling-events.html
 ---
 
-考虑 [签名章节](/react/docs/rendering-elements.html#updating-the-rendered-element) 中时钟的例子。
+考虑 [前面章节](/react/docs/rendering-elements.html#updating-the-rendered-element) 中时钟的例子。
 
 Consider the ticking clock example from [one of the previous sections](/react/docs/rendering-elements.html#updating-the-rendered-element).
 
@@ -63,7 +63,7 @@ function tick() {
 setInterval(tick, 1000);
 ```
 
-[Try it on CodePen.](http://codepen.io/gaearon/pen/dpdoYR?editors=0010)
+[在 CodePen 中试一试](http://codepen.io/gaearon/pen/dpdoYR?editors=0010)
 
 However, it misses a crucial requirement: the fact that the `Clock` sets up a timer and updates the UI every second should be an implementation detail of the `Clock`.
 
@@ -82,7 +82,7 @@ State is similar to props, but it is private and fully controlled by the compone
 
 We [mentioned before](/react/docs/components-and-props.html#functional-and-class-components) that components defined as classes have some additional features. Local state is exactly that: a feature available only to classes.
 
-## Converting a Function to a Class
+## 函数转化成类
 
 You can convert a functional component like `Clock` to a class in five steps:
 
@@ -109,13 +109,15 @@ class Clock extends React.Component {
 }
 ```
 
-[Try it on CodePen.](http://codepen.io/gaearon/pen/zKRGpo?editors=0010)
+[在 CodePen 中试一试](http://codepen.io/gaearon/pen/zKRGpo?editors=0010)
+
+`Cloc`现在被定义为一个类而不是函数。
 
 `Clock` is now defined as a class rather than a function.
 
 This lets us use additional features such as local state and lifecycle hooks.
 
-## Adding Local State to a Class
+## 向类中添加本地状态
 
 We will move the `date` from props to state in three steps:
 
@@ -176,6 +178,8 @@ ReactDOM.render(
 
 We will later add the timer code back to the component itself.
 
+结果看起来像这样：
+
 The result looks like this:
 
 ```js{2-5,11,18}
@@ -201,11 +205,13 @@ ReactDOM.render(
 );
 ```
 
-[Try it on CodePen.](http://codepen.io/gaearon/pen/KgQpJd?editors=0010)
+[在 CodePen 中试一试](http://codepen.io/gaearon/pen/KgQpJd?editors=0010)
 
 Next, we'll make the `Clock` set up its own timer and update itself every second.
 
-## Adding Lifecycle Methods to a Class
+## 向类中添加生命周期方法
+
+在应用程序中会有很多组件，当这些组件销毁时释放它们占用的资源就会很重要。
 
 In applications with many components, it's very important to free up resources taken by the components when they are destroyed.
 
@@ -240,6 +246,8 @@ class Clock extends React.Component {
   }
 }
 ```
+
+这些方法里我们调用了“生命周期钩子”。
 
 These methods are called "lifecycle hooks".
 
@@ -312,7 +320,9 @@ ReactDOM.render(
 );
 ```
 
-[Try it on CodePen.](http://codepen.io/gaearon/pen/amqdNA?editors=0010)
+[在 CodePen 中试一试](http://codepen.io/gaearon/pen/amqdNA?editors=0010)
+
+现在这个时钟每秒都会闪动。
 
 Now the clock ticks every second.
 
@@ -328,11 +338,15 @@ Let's quickly recap what's going on and the order in which the methods are calle
 
 5) If the `Clock` component is ever removed from the DOM, React calls the `componentWillUnmount()` lifecycle hook so the timer is stopped.
 
-## Using State Correctly
+## 正确地使用状态
+
+关于 `setState()` ，你有三个需要知道的地方。
 
 There are three things you should know about `setState()`.
 
-### Do Not Modify State Directly
+### 不要直接修改状态
+
+例如，这个将不会重新渲染一个组件：
 
 For example, this will not re-render a component:
 
@@ -340,17 +354,18 @@ For example, this will not re-render a component:
 // Wrong
 this.state.comment = 'Hello';
 ```
-
+用 `setState()` 来替代：
 Instead, use `setState()`:
 
 ```js
 // Correct
 this.setState({comment: 'Hello'});
 ```
+指定 `this.state` 的唯一的地方是构造器方法。
 
 The only place where you can assign `this.state` is the constructor.
 
-### State Updates May Be Asynchronous
+### 状态更新可能是异步的
 
 React may batch multiple `setState()` calls into a single update for performance.
 
@@ -447,7 +462,7 @@ function FormattedDate(props) {
 }
 ```
 
-[Try it on CodePen.](http://codepen.io/gaearon/pen/zKRqNB?editors=0010)
+[在 CodePen 中试一试](http://codepen.io/gaearon/pen/zKRqNB?editors=0010)
 
 This is commonly called a "top-down" or "unidirectional" data flow. Any state is always owned by some specific component, and any data or UI derived from that state can only affect components "below" them in the tree.
 
@@ -472,7 +487,7 @@ ReactDOM.render(
 );
 ```
 
-[Try it on CodePen.](http://codepen.io/gaearon/pen/vXdGmd?editors=0010)
+[在 CodePen 中试一试](http://codepen.io/gaearon/pen/vXdGmd?editors=0010)
 
 Each `Clock` sets up its own timer and updates independently.
 
