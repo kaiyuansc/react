@@ -16,11 +16,16 @@ prev: rendering-elements.html
 next: state-and-lifecycle.html
 ---
 
+组件让你把UI划分成不相干的，可重用的块，这些块是相互独立的。
+
 Components let you split the UI into independent, reusable pieces, and think about each piece in isolation.
 
+概念上来说，组件就像 JavaScript 中的函数。它们接收任意的输入（称为 “props”），然后返回用于描述在屏幕中显示界面的 React 元素。
 Conceptually, components are like JavaScript functions. They accept arbitrary inputs (called "props") and return React elements describing what should appear on the screen.
 
-## Functional and Class Components
+## 函数和类组件
+
+定义一个组件的最简单方法就是写一个 JavaScript 函数：
 
 The simplest way to define a component is to write a JavaScript function:
 
@@ -29,8 +34,11 @@ function Welcome(props) {
   return <h1>Hello, {props.name}</h1>;
 }
 ```
+这个函数是一个有效的 React 组件，因为它接收一个带有数据的 “props” 对象数组并返回 React 元素。因为它们是字面上的 JavaScript 函数固我们称这种组件为“functional”。
 
 This function is a valid React component because it accepts a single "props" object argument with data and returns a React element. We call such components "functional" because they are literally JavaScript functions.
+
+你也能使用一个 [ES6 类](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes) 来定义一个组件：
 
 You can also use an [ES6 class](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes) to define a component:
 
@@ -46,13 +54,15 @@ The above two components are equivalent from React's point of view.
 
 Classes have some additional features that we will discuss in the [next sections](/react/docs/state-and-lifecycle.html). Until then, we will use functional components for their conciseness.
 
-## Rendering a Component
+## 渲染一个组件
 
 Previously, we only encountered React elements that represent DOM tags:
 
 ```js
 const element = <div />;
 ```
+
+尽管如此，元素同样能代表用户自定义的组件：
 
 However, elements can also represent user-defined components:
 
@@ -61,6 +71,8 @@ const element = <Welcome name="Sara" />;
 ```
 
 When React sees an element representing a user-defined component, it passes JSX attributes to this component as a single object. We call this object "props".
+
+例如，这个代码在页面中渲染 “Hello, Sara”：
 
 For example, this code renders "Hello, Sara" on the page:
 
@@ -76,7 +88,9 @@ ReactDOM.render(
 );
 ```
 
-[Try it on CodePen.](http://codepen.io/gaearon/pen/YGYmEG?editors=0010)
+[在 CodePen 中试一试](http://codepen.io/gaearon/pen/YGYmEG?editors=0010)
+
+让我们描述一下在这个例子中发生了什么：
 
 Let's recap what happens in this example:
 
@@ -85,13 +99,13 @@ Let's recap what happens in this example:
 3. Our `Welcome` component returns a `<h1>Hello, Sara</h1>` element as the result.
 4. React DOM efficiently updates the DOM to match `<h1>Hello, Sara</h1>`.
 
->**Caveat:**
+>**警告：**
 >
 >Always start component names with a capital letter.
 >
 >For example, `<div />` represents a DOM tag, but `<Welcome />` represents a component and requires `Welcome` to be in scope.
 
-## Composing Components
+## 构成组件
 
 Components can refer to other components in their output. This lets us use the same component abstraction for any level of detail. A button, a form, a dialog, a screen: in React apps, all those are commonly expressed as components.
 
@@ -118,11 +132,11 @@ ReactDOM.render(
 );
 ```
 
-[Try it on CodePen.](http://codepen.io/gaearon/pen/KgQKPr?editors=0010)
+[在 CodePen 中试一试](http://codepen.io/gaearon/pen/KgQKPr?editors=0010)
 
 Typically, new React apps have a single `App` component at the very top. However, if you integrate React into an existing app, you might start bottom-up with a small component like `Button` and gradually work your way to the top of the view hierarchy.
 
->**Caveat:**
+>**警告：**
 >
 >Components must return a single root element. This is why we added a `<div>` to contain all the `<Welcome />` elements.
 
@@ -156,7 +170,7 @@ function Comment(props) {
 }
 ```
 
-[Try it on CodePen.](http://codepen.io/gaearon/pen/VKQwEo?editors=0010)
+[在 CodePen 中试一试](http://codepen.io/gaearon/pen/VKQwEo?editors=0010)
 
 It accepts `author` (an object), `text` (a string), and `date` (a date) as props, and describes a comment on a social media website.
 
@@ -235,11 +249,13 @@ function Comment(props) {
 }
 ```
 
-[Try it on CodePen.](http://codepen.io/gaearon/pen/rrJNJY?editors=0010)
+[在 CodePen 中试一试](http://codepen.io/gaearon/pen/rrJNJY?editors=0010)
 
 Extracting components might seem like grunt work at first, but having a palette of reusable components pays off in larger apps. A good rule of thumb is that if a part of your UI is used several times (`Button`, `Panel`, `Avatar`), or is complex enough on its own (`App`, `FeedStory`, `Comment`), it is a good candidate to be a reusable component.
 
-## Props are Read-Only
+## Props 是只读的
+
+无论你声明一个组件为 [一个函数还是一个类](#functional-and-class-components)，它必须不能修改自己的 props。考虑这个 `sum` 函数：
 
 Whether you declare a component [as a function or a class](#functional-and-class-components), it must never modify its own props. Consider this `sum` function:
 
