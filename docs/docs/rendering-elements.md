@@ -25,6 +25,8 @@ Unlike browser DOM elements, React elements are plain objects, and are cheap to 
 
 >**提示：**
 >
+>一个更广泛被知道的“组件”的概念使元素难于理解。我们将在[下一章节](/react/docs/components-and-props.html)中介绍组件。元素是组件的组成部分，我们鼓励你在跳跃阅读前先看这一章节。
+>
 >One might confuse elements with a more widely known concept of "components". We will introduce components in the [next section](/react/docs/components-and-props.html). Elements are what components are "made of", and we encourage you to read this section before jumping ahead.
 
 ## 把元素渲染进 DOM
