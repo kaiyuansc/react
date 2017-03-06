@@ -101,6 +101,8 @@ You may also use curly braces to embed a JavaScript expression in an attribute:
 const element = <img src={user.avatarUrl}></img>;
 ```
 
+在属性中嵌入一个 JavaScript 表达式时不要用引号包裹大括号，否则 JSX 会认为这个属性是一个字符串字面量而不是一个表达式。你应该用引号来表示字符串值或用大括号表示表达式，不能再同一个属性中同时使用它们。
+
 Don't put quotes around curly braces when embedding a JavaScript expression in an attribute. Otherwise JSX will treat the attribute as a string literal rather than an expression. You should either use quotes (for string values) or curly braces (for expressions), but not both in the same attribute.
 
 ### 为 JSX 指定子元素
@@ -132,7 +134,9 @@ const element = (
 >
 >For example, `class` becomes [`className`](https://developer.mozilla.org/en-US/docs/Web/API/Element/className) in JSX, and `tabindex` becomes [`tabIndex`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/tabIndex).
 
-### JSX Prevents Injection Attacks
+### JSX 阻止注入攻击
+
+在 JSX 中嵌入用户输入是安全的
 
 It is safe to embed user input in JSX:
 
@@ -141,6 +145,8 @@ const title = response.potentiallyMaliciousInput;
 // This is safe:
 const element = <h1>{title}</h1>;
 ```
+
+默认情况下，React DOM 在渲染他们前会 [escapes](http://stackoverflow.com/questions/7381974/which-characters-need-to-be-escaped-on-html) 嵌入到 JSX 中的任何值。这样它就能确保你的程序不会被注入任何不明确的内容。所有东西会在渲染前被转化成字符串，这能帮你阻止 [XSS(cross-site-scripting)](https://en.wikipedia.org/wiki/Cross-site_scripting) 攻击。
 
 By default, React DOM [escapes](http://stackoverflow.com/questions/7381974/which-characters-need-to-be-escaped-on-html) any values embedded in JSX before rendering them. Thus it ensures that you can never inject anything that's not explicitly written in your application. Everything is converted to a string before being rendered. This helps prevent [XSS (cross-site-scripting)](https://en.wikipedia.org/wiki/Cross-site_scripting) attacks.
 
