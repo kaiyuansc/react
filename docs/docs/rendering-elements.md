@@ -112,6 +112,8 @@ It calls `ReactDOM.render()` every second from a [`setInterval()`](https://devel
 
 React DOM compares the element and its children to the previous one, and only applies the DOM updates necessary to bring the DOM to the desired state.
 
+你能在浏览器中通过检查[最终的例子](http://codepen.io/gaearon/pen/gwoJZk?editors=0010)来核实。
+
 You can verify by inspecting the [last example](http://codepen.io/gaearon/pen/gwoJZk?editors=0010) with the browser tools:
 
 ![DOM inspector showing granular updates](/react/img/docs/granular-dom-updates.gif)
