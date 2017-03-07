@@ -1,6 +1,6 @@
 ---
 id: handling-events
-title: Handling Events
+title: 处理事件
 permalink: docs/handling-events.html
 prev: state-and-lifecycle.html
 next: conditional-rendering.html
@@ -10,8 +10,10 @@ redirect_from:
 
 Handling events with React elements is very similar to handling events on DOM elements. There are some syntactic differences:
 
-* React events are named using camelCase, rather than lowercase.
-* With JSX you pass a function as the event handler, rather than a string.
+* React 事件用驼峰命名法来命名，而不是都用小写。React events are named using camelCase, rather than lowercase.
+* 通过 JSX，你传递一个函数来处理事件，而不是一个字符串。With JSX you pass a function as the event handler, rather than a string.
+
+例如，这个 HTML：
 
 For example, the HTML:
 
@@ -21,6 +23,8 @@ For example, the HTML:
 </button>
 ```
 
+与 React 中有点不同：
+
 is slightly different in React:
 
 ```js{1}
@@ -29,6 +33,8 @@ is slightly different in React:
 </button>
 ```
 
+React中的另一个不同就是你不能返回 false 来阻止默认行为。你必须明确地调用 preventDefault。例如，普通的 HTML 中为了阻止链接打开新页面的默认行为，你可以这样写：
+
 Another difference is that you cannot return `false` to prevent default behavior in React. You must call `preventDefault` explicitly. For example, with plain HTML, to prevent the default link behavior of opening a new page, you can write:
 
 ```html
@@ -36,6 +42,8 @@ Another difference is that you cannot return `false` to prevent default behavior
   Click me
 </a>
 ```
+
+React 中，你可以这么写来代替：
 
 In React, this could instead be:
 
@@ -54,9 +62,15 @@ function ActionLink() {
 }
 ```
 
+这里，e 是一个虚拟的事件。React 根据 W3C spec 来定义这些 虚拟事件，所以你不用担心跨平台的兼容性。你可以看 SyntheticEvent 相关向导来深入学习。
+
 Here, `e` is a synthetic event. React defines these synthetic events according to the [W3C spec](https://www.w3.org/TR/DOM-Level-3-Events/), so you don't need to worry about cross-browser compatibility. See the [`SyntheticEvent`](/react/docs/events.html) reference guide to learn more.
 
+使用 React 时，当一个 DOM 元素被创建后你一般不需要调用 addEventListener 来添加事件监听。
+
 When using React you should generally not need to call `addEventListener` to add listeners to a DOM element after it is created. Instead, just provide a listener when the element is initially rendered.
+
+当你使用 ES6 类 来定义组件，例如，这个 Toggle 组件渲染了一个能让用户切换 “开” 和 “关” 状态的一个按钮。
 
 When you define a component using an [ES6 class](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes), a common pattern is for an event handler to be a method on the class. For example, this `Toggle` component renders a button that lets the user toggle between "ON" and "OFF" states:
 
@@ -91,7 +105,7 @@ ReactDOM.render(
 );
 ```
 
-[Try it on CodePen.](http://codepen.io/gaearon/pen/xEmzGg?editors=0010)
+[在 CodePen 中试一试](http://codepen.io/gaearon/pen/xEmzGg?editors=0010)
 
 You have to be careful about the meaning of `this` in JSX callbacks. In JavaScript, class methods are not [bound](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_objects/Function/bind) by default. If you forget to bind `this.handleClick` and pass it to `onClick`, `this` will be `undefined` when the function is actually called.
 
