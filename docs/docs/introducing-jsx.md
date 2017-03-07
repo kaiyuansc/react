@@ -66,7 +66,7 @@ We split JSX over multiple lines for readability. While it isn't required, when 
 
 ### JSX 也是一个表达式
 
-编译后，JSX 表达式变成一个合格的 JavaScript 对象。
+编译后，JSX 表达式变成一个正常的 JavaScript 对象。
 
 After compilation, JSX expressions become regular JavaScript objects.
 
