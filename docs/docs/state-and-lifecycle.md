@@ -41,6 +41,8 @@ setInterval(tick, 1000);
 这一章中，我们将学习如何使这个 `Clock` 组件真正实现封装的和可重用的。
 In this section, we will learn how to make the `Clock` component truly reusable and encapsulated. It will set up its own timer and update itself every second.
 
+我们可以开始封装这个时钟了。
+
 We can start by encapsulating how the clock looks:
 
 ```js{3-6,12}
@@ -76,25 +78,33 @@ ReactDOM.render(
 );
 ```
 
+为了实现它，我们需要向 `Clock` 组件添加一个 "state"。
+
 To implement this, we need to add "state" to the `Clock` component.
 
+State 和 props 很像，但它是组件私有的并被组件完全控制。
+
 State is similar to props, but it is private and fully controlled by the component.
+
+我们[之前提到过](/react/docs/components-and-props.html#functional-and-class-components)，函数以类的方式定义时会有一些附加功能。本地 state 恰恰只有类才会有。
 
 We [mentioned before](/react/docs/components-and-props.html#functional-and-class-components) that components defined as classes have some additional features. Local state is exactly that: a feature available only to classes.
 
 ## 函数转化成类
 
+你可以通过五步把像 Clock 这个函数式的组件转化成一个类来定义的组件：
+
 You can convert a functional component like `Clock` to a class in five steps:
 
-1. Create an [ES6 class](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes) with the same name that extends `React.Component`.
+1. 以同样的名字创建一个 [ES6 类](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes)，这个类继承自 React.Component。Create an [ES6 class](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes) with the same name that extends `React.Component`.
 
-2. Add a single empty method to it called `render()`.
+2. 添加一个叫做 `render()` 的空方法。Add a single empty method to it called `render()`.
 
-3. Move the body of the function into the `render()` method.
+3. 把函数组件的主体移进 `render()` 方法。Move the body of the function into the `render()` method.
 
-4. Replace `props` with `this.props` in the `render()` body.
+4. 在 `render()` 中用 `this.props` 代替 `props`。Replace `props` with `this.props` in the `render()` body.
 
-5. Delete the remaining empty function declaration.
+5. 删除之前的空的函数声明。Delete the remaining empty function declaration.
 
 ```js
 class Clock extends React.Component {
@@ -115,13 +125,15 @@ class Clock extends React.Component {
 
 `Clock` is now defined as a class rather than a function.
 
+这让我们能是有诸如本地状态和生命周期钩子的附加功能。
+
 This lets us use additional features such as local state and lifecycle hooks.
 
 ## 向类中添加本地状态
 
 We will move the `date` from props to state in three steps:
 
-1) Replace `this.props.date` with `this.state.date` in the `render()` method:
+1) 在 `render()` 方法中用 `this.state.date` 代替 `this.props.date`。Replace `this.props.date` with `this.state.date` in the `render()` method:
 
 ```js{6}
 class Clock extends React.Component {
@@ -136,7 +148,7 @@ class Clock extends React.Component {
 }
 ```
 
-2) Add a [class constructor](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes#Constructor) that assigns the initial `this.state`:
+2) 添加一个初始化 `this.state` 的[类构造器](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes#Constructor)。Add a [class constructor](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes#Constructor) that assigns the initial `this.state`:
 
 ```js{4}
 class Clock extends React.Component {
@@ -167,7 +179,7 @@ Note how we pass `props` to the base constructor:
 
 Class components should always call the base constructor with `props`.
 
-3) Remove the `date` prop from the `<Clock />` element:
+3) 从 `<Clock />` 元素中移除 `date` prop。Remove the `date` prop from the `<Clock />` element:
 
 ```js{2}
 ReactDOM.render(
