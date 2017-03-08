@@ -39,6 +39,7 @@ setInterval(tick, 1000);
 [在 CodePen 中试一试](http://codepen.io/gaearon/pen/gwoJZk?editors=0010)
 
 这一章中，我们将学习如何使这个 `Clock` 组件真正实现封装的和可重用的。
+
 In this section, we will learn how to make the `Clock` component truly reusable and encapsulated. It will set up its own timer and update itself every second.
 
 我们可以开始封装这个时钟了。
@@ -86,7 +87,7 @@ State 和 props 很像，但它是组件私有的并被组件完全控制。
 
 State is similar to props, but it is private and fully controlled by the component.
 
-我们[之前提到过](/react/docs/components-and-props.html#functional-and-class-components)，函数以类的方式定义时会有一些附加功能。本地 state 恰恰只有类才会有。
+我们[之前提到过](/react/docs/components-and-props.html#functional-and-class-components)，组件以类的方式定义时会有一些附加功能。本地 state 恰恰只有类才会有。
 
 We [mentioned before](/react/docs/components-and-props.html#functional-and-class-components) that components defined as classes have some additional features. Local state is exactly that: a feature available only to classes.
 
@@ -125,11 +126,13 @@ class Clock extends React.Component {
 
 `Clock` is now defined as a class rather than a function.
 
-这让我们能是有诸如本地状态和生命周期钩子的附加功能。
+这让我们能有诸如本地状态和生命周期钩子的附加功能。
 
 This lets us use additional features such as local state and lifecycle hooks.
 
 ## 向类中添加本地状态
+
+我们分三步将来自于 props 的 `date` 移进状态：
 
 We will move the `date` from props to state in three steps:
 
