@@ -29,6 +29,8 @@ function GuestGreeting(props) {
 }
 ```
 
+我们创建一个依据用户是否登录的 `Greeting` 的组件来显示这两个组件中的一个：
+
 We'll create a `Greeting` component that displays either of these components depending on whether a user is logged in:
 
 ```javascript{3-7,11,12}
@@ -49,9 +51,13 @@ ReactDOM.render(
 
 [在 CodePen 中试一试](https://codepen.io/gaearon/pen/ZpVxNq?editors=0011)
 
+这个例子根据 `isLoggedIn` prop 的值渲染不同的问候。
+
 This example renders a different greeting depending on the value of `isLoggedIn` prop.
 
 ### 元素变量
+
+你可以使用变量存储元素。当输出的其余部分没有改变时，这样能帮助你有条件地渲染组件中的一部分。
 
 You can use variables to store elements. This can help you conditionally render a part of the component while the rest of the output doesn't change.
 
