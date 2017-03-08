@@ -56,6 +56,8 @@ Classes have some additional features that we will discuss in the [next sections
 
 ## 渲染一个组件
 
+之前，我们只遇到代表 DOM 标签的 React 元素：
+
 Previously, we only encountered React elements that represent DOM tags:
 
 ```js
@@ -69,6 +71,8 @@ However, elements can also represent user-defined components:
 ```js
 const element = <Welcome name="Sara" />;
 ```
+
+当 React 碰到一个代表用户自定义组件的元素，它会传递 JSX 属性到这个组件来作为一个对象。我们管这个对象叫“props”。
 
 When React sees an element representing a user-defined component, it passes JSX attributes to this component as a single object. We call this object "props".
 
@@ -94,10 +98,10 @@ ReactDOM.render(
 
 Let's recap what happens in this example:
 
-1. We call `ReactDOM.render()` with the `<Welcome name="Sara" />` element.
-2. React calls the `Welcome` component with `{name: 'Sara'}` as the props.
-3. Our `Welcome` component returns a `<h1>Hello, Sara</h1>` element as the result.
-4. React DOM efficiently updates the DOM to match `<h1>Hello, Sara</h1>`.
+1. 我们调用 `ReactDOM.render()` 渲染 `<welcome name="Sara" />` 元素。We call `ReactDOM.render()` with the `<Welcome name="Sara" />` element.
+2. React 将 `{name: 'Sara'}` 作为 props 来调用 `Welcome` 组件。React calls the `Welcome` component with `{name: 'Sara'}` as the props.
+3. `Welcome` 组件将 `<h1>#ello, Sara</h1>` 元素作为结果返回。Our `Welcome` component returns a `<h1>Hello, Sara</h1>` element as the result.
+4. React DOM 高效地将匹配的 DOM 更新成 `<h1>#ello, Sara</h1>`。React DOM efficiently updates the DOM to match `<h1>Hello, Sara</h1>`.
 
 >**警告：**
 >
@@ -105,9 +109,11 @@ Let's recap what happens in this example:
 >
 >For example, `<div />` represents a DOM tag, but `<Welcome />` represents a component and requires `Welcome` to be in scope.
 
-## 构成组件
+## 构建组件
 
 Components can refer to other components in their output. This lets us use the same component abstraction for any level of detail. A button, a form, a dialog, a screen: in React apps, all those are commonly expressed as components.
+
+例如，我们可以创建一个多次渲染 `Welcome` 的 `App` 组件：
 
 For example, we can create an `App` component that renders `Welcome` many times:
 
@@ -140,9 +146,13 @@ Typically, new React apps have a single `App` component at the very top. However
 >
 >Components must return a single root element. This is why we added a `<div>` to contain all the `<Welcome />` elements.
 
-## Extracting Components
+## 提取组件
+
+不要害怕把组件分成更小的组件。
 
 Don't be afraid to split components into smaller components.
+
+例如， 考虑这个 `Comment` 组件：
 
 For example, consider this `Comment` component:
 
