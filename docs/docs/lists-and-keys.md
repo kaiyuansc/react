@@ -6,6 +6,8 @@ prev: conditional-rendering.html
 next: forms.html
 ---
 
+首先让我们回顾一下在 JavaScript 中式如何处理列表的。
+
 First, let's review how you transform lists in JavaScript.
 
 Given the code below, we use the [`map()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) function to take an array of `numbers` and double their values. We assign the new array returned by `map()` to the variable `doubled` and log it:
@@ -20,7 +22,7 @@ This code logs `[2, 4, 6, 8, 10]` to the console.
 
 In React, transforming arrays into lists of [elements](/react/docs/rendering-elements.html) is nearly identical.
 
-### Rendering Multiple Components
+### 渲染多个组件
 
 You can build collections of elements and [include them in JSX](/react/docs/introducing-jsx.html#embedding-expressions-in-jsx) using curly braces `{}`.
 
@@ -42,11 +44,15 @@ ReactDOM.render(
 );
 ```
 
-[Try it on CodePen.](https://codepen.io/gaearon/pen/GjPyQr?editors=0011)
+[在 CodePen 中试一试](https://codepen.io/gaearon/pen/GjPyQr?editors=0011)
+
+这个代码渲染了从1到5的数字列表。
 
 This code displays a bullet list of numbers between 1 and 5.
 
-### Basic List Component
+### 基本的列表组件
+
+通常你会在[组件](/react/docs/components-and-props.html)内部渲染组件。
 
 Usually you would render lists inside a [component](/react/docs/components-and-props.html).
 
@@ -94,7 +100,7 @@ ReactDOM.render(
 );
 ```
 
-[Try it on CodePen.](https://codepen.io/gaearon/pen/jrXYRR?editors=0011)
+[在 CodePen 中试一试](https://codepen.io/gaearon/pen/jrXYRR?editors=0011)
 
 ## Keys
 
@@ -200,11 +206,11 @@ ReactDOM.render(
 );
 ```
 
-[Try it on CodePen.](https://codepen.io/rthor/pen/QKzJKG?editors=0010)
+[在 CodePen 中试一试](https://codepen.io/rthor/pen/QKzJKG?editors=0010)
 
 A good rule of thumb is that elements inside the `map()` call need keys.
 
-### Keys Must Only Be Unique Among Siblings
+### Keys 在同胞中必须唯一
 
 Keys used within arrays should be unique among their siblings. However they don't need to be globally unique. We can use the same keys when we produce two different arrays:
 
@@ -244,7 +250,7 @@ ReactDOM.render(
 );
 ```
 
-[Try it on CodePen.](https://codepen.io/gaearon/pen/NRZYGN?editors=0010)
+[在 CodePen 中试一试](https://codepen.io/gaearon/pen/NRZYGN?editors=0010)
 
 Keys serve as a hint to React but they don't get passed to your components. If you need the same value in your component, pass it explicitly as a prop with a different name:
 
@@ -259,7 +265,9 @@ const content = posts.map((post) =>
 
 With the example above, the `Post` component can read `props.id`, but not `props.key`.
 
-### Embedding map() in JSX
+### 在 JSX 中嵌入 map()
+
+上面的例子中，我们声明一个分离的 `listItems` 变量并包含进 JSX：
 
 In the examples above we declared a separate `listItems` variable and included it in JSX:
 
@@ -278,6 +286,7 @@ function NumberList(props) {
 }
 ```
 
+JSX 允许在大括号中[嵌入任何表达式](/react/docs/introducing-jsx.html#embedding-expressions-in-jsx)，所以我们可以内联低嵌入 `map()`：
 JSX allows [embedding any expressions](/react/docs/introducing-jsx.html#embedding-expressions-in-jsx) in curly braces so we could inline the `map()` result:
 
 ```js{5-8}
@@ -294,6 +303,6 @@ function NumberList(props) {
 }
 ```
 
-[Try it on CodePen.](https://codepen.io/gaearon/pen/BLvYrB?editors=0010)
+[在 CodePen 中试一试](https://codepen.io/gaearon/pen/BLvYrB?editors=0010)
 
 Sometimes this results in clearer code, but this style can also be abused. Like in JavaScript, it is up to you to decide whether it is worth extracting a variable for readability. Keep in mind that if the `map()` body is too nested, it might be a good time to [extract a component](/react/docs/components-and-props.html#extracting-components).
