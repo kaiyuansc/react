@@ -8,6 +8,8 @@ redirect_from:
   - "docs/events-ko-KR.html"
 ---
 
+用 React 元素与 DOM 元素在处理事件上很相似。它们有一些语法上的不同：
+
 Handling events with React elements is very similar to handling events on DOM elements. There are some syntactic differences:
 
 * React 事件用驼峰命名法来命名，而不是都用小写。React events are named using camelCase, rather than lowercase.
@@ -107,6 +109,8 @@ ReactDOM.render(
 
 [在 CodePen 中试一试](http://codepen.io/gaearon/pen/xEmzGg?editors=0010)
 
+你必须注意 JSX 回调函数中 this 的意思。JavaScript 中，类方法默认是不[限制](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_objects/Function/bind)的。如果你忘了绑定 `this.handleClick` 并传递给 `onClick`，`this` 在函数被实际调用时将会是 `undefined`。
+
 You have to be careful about the meaning of `this` in JSX callbacks. In JavaScript, class methods are not [bound](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_objects/Function/bind) by default. If you forget to bind `this.handleClick` and pass it to `onClick`, `this` will be `undefined` when the function is actually called.
 
 This is not React-specific behavior; it is a part of [how functions work in JavaScript](https://www.smashingmagazine.com/2014/01/understanding-javascript-function-prototype-bind/). Generally, if you refer to a method without `()` after it, such as `onClick={this.handleClick}`, you should bind that method.
@@ -131,7 +135,11 @@ class LoggingButton extends React.Component {
 }
 ```
 
+这个语法在 [Create React App](https://github.com/facebookincubator/create-react-app) 是被默认启用。
+
 This syntax is enabled by default in [Create React App](https://github.com/facebookincubator/create-react-app).
+
+如果你不使用属性初始化语法，你可以在回调方法中使用 [arrow function](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/Arrow_functions)：
 
 If you aren't using property initializer syntax, you can use an [arrow function](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/Arrow_functions) in the callback:
 
