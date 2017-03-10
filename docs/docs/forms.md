@@ -1,6 +1,6 @@
 ---
 id: forms
-title: Forms
+title: 表单
 permalink: docs/forms.html
 prev: state-and-lifecycle.html
 next: lifting-state-up.html
@@ -8,6 +8,8 @@ redirect_from:
   - "tips/controlled-input-null-value.html"
   - "docs/forms-zh-CN.html"
 ---
+
+React中，HTML 表单元素运作方式上与其它的 DOM 元素有点不同，因为表单元素本身保存着一些内部状态。例如，这个简单的HTML 表单接收一个名字：
 
 HTML form elements work a little bit differently from other DOM elements in React, because form elements naturally keep some internal state. For example, this form in plain HTML accepts a single name:
 
@@ -20,6 +22,8 @@ HTML form elements work a little bit differently from other DOM elements in Reac
   <input type="submit" value="Submit" />
 </form>
 ```
+
+这个表单在用户提交时会有它在浏览器中的默认表单行为。如果你在 React 中想要这些行为。但是在大多说情况下，实现这个的标准方法是一个叫做“可控组件”的方法。
 
 This form has the default HTML form behavior of browsing to a new page when the user submits the form. If you want this behavior in React, it just works. But in most cases, it's convenient to have a JavaScript function that handles the submission of the form and has access to the data that the user entered into the form. The standard way to achieve this is with a technique called "controlled components".
 
@@ -64,7 +68,7 @@ class NameForm extends React.Component {
 }
 ```
 
-[Try it on CodePen.](https://codepen.io/gaearon/pen/VmmPgp?editors=0010)
+[在 CodePen 中试一试](https://codepen.io/gaearon/pen/VmmPgp?editors=0010)
 
 Since the `value` attribute is set on our form element, the displayed value will always be `this.state.value`, making the React state the source of truth. Since `handleChange` runs on every keystroke to update the React state, the displayed value will update as the user types.
 
@@ -76,7 +80,7 @@ handleChange(event) {
 }
 ```
 
-## The textarea Tag
+## 文本域标签
 
 In HTML, a `<textarea>` element defines its text by its children:
 
@@ -125,7 +129,7 @@ class EssayForm extends React.Component {
 
 Notice that `this.state.value` is initialized in the constructor, so that the text area starts off with some text in it.
 
-## The select Tag
+## 选择标签
 
 In HTML, `<select>` creates a drop-down list. For example, this HTML creates a drop-down list of flavors:
 
@@ -178,13 +182,15 @@ class FlavorForm extends React.Component {
 }
 ```
 
-[Try it on CodePen.](https://codepen.io/gaearon/pen/JbbEzX?editors=0010)
+[在 CodePen 中试一试](https://codepen.io/gaearon/pen/JbbEzX?editors=0010)
 
 Overall, this makes it so that `<input type="text">`, `<textarea>`, and `<select>` all work very similarly - they all accept a `value` attribute that you can use to implement a controlled component.
 
-## Handling Multiple Inputs
+## 处理多行输入
 
 When you need to handle multiple controlled `input` elements, you can add a `name` attribute to each element and let the handler function choose what to do based on the value of `event.target.name`.
+
+例如：
 
 For example:
 
@@ -236,7 +242,7 @@ class Reservation extends React.Component {
 }
 ```
 
-[Try it on CodePen.](https://codepen.io/gaearon/pen/wgedvV?editors=0010)
+[在 CodePen 中试一试](https://codepen.io/gaearon/pen/wgedvV?editors=0010)
 
 Note how we used the ES6 [computed property name](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Object_initializer#Computed_property_names) syntax to update the state key corresponding to the given input name:
 
